@@ -2,3 +2,4 @@ venv
 logs
 *.egg-info
 __pycache__/
+artifacts
