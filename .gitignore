@@ -2,5 +2,4 @@ venv
 logs
 *.egg-info
 __pycache__/
-artifacts
 catboost_info

@@ -1,12 +1,15 @@
+from ast import mod
 import sys
 import os
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from dataclasses import dataclass
 
+from src.components import model_trainer
 from src.logger import logging
 from src.exception import CustomException
 from src.components.data_transformation import DataTransformation
+from src.components.model_trainer import ModelTrainer
 
 
 @dataclass
@@ -59,4 +62,6 @@ if __name__ == "__main__":
     train_path, test_path = di.initiate_data_ingestion()
 
     data_transformation = DataTransformation()
-    data_transformation.transform_data(train_path, test_path)
+    train, test, _ = data_transformation.transform_data(train_path, test_path)
+    model_trainer = ModelTrainer()
+    model_trainer.initiate_model_trainer(train, test)
