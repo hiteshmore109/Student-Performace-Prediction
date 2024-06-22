@@ -29,13 +29,13 @@ class CustomData:
     def get_dataframe(self):
         try:
             data_dict = {
-                "gender": self.gender,
-                "race_ethnicity": self.race_ethnicity,
-                "parental_level_of_education": self.parental_level_of_education,
-                "lunch": self.lunch,
-                "test_preparation_course": self.test_preparation_course,
-                "reading_score": self.reading_score,
-                "writing_score": self.writing_score,
+                "gender": [self.gender],
+                "race_ethnicity": [self.race_ethnicity],
+                "parental_level_of_education": [self.parental_level_of_education],
+                "lunch": [self.lunch],
+                "test_preparation_course": [self.test_preparation_course],
+                "reading_score": [self.reading_score],
+                "writing_score": [self.writing_score],
             }
 
             return pd.DataFrame(data_dict)
@@ -53,7 +53,7 @@ class PredictPipeline:
             model = load_object(model_path)
             logging.info("Preprocessor and Model loaded successfully")
 
-            features_preprocessed = preprocessor.fit_transform(features)
+            features_preprocessed = preprocessor.transform(features)
             prediction = model.predict(features_preprocessed)
 
             return prediction

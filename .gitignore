@@ -3,3 +3,5 @@ logs
 *.egg-info
 __pycache__/
 catboost_info
+build/
+dist/
